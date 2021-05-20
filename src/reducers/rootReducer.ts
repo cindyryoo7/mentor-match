@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import questionAnswerReducer from './questionAnswerReducer';
+import surveyFormReducer from './surveyFormReducer';
 
 const rootReducer = combineReducers({
-  answers: questionAnswerReducer
+  answers: surveyFormReducer
 });
 
 export type AppState = ReturnType<typeof rootReducer>;

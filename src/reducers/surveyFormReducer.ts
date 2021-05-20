@@ -1,4 +1,4 @@
-import * as actions from '../actionTypes/questionAnswerActionTypes';
+import * as actions from '../actionTypes/surveyFormActionTypes';
 import { QuestionAnswer } from 'Types';
 
 export interface QuestionAnswerState {
@@ -9,7 +9,7 @@ const initialState: QuestionAnswerState = {
   answers: []
 };
 
-export default function questionAnswerReducer(
+export default function surveyFormReducer(
   state: QuestionAnswerState = initialState,
   action: actions.SubmitAnswerAction
 ): QuestionAnswerState {
