@@ -1,4 +1,4 @@
-import React, { useState, useEffect, ChangeEvent, FormEvent } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 import logo from './assets/logo.jpg';
 import { allLanguages, allTechnicalSkills, allSoftSkills, allHobbies } from './questions';
 
@@ -7,19 +7,25 @@ const SurveyForm: React.FC = () => {
   const [position, setPosition] = useState<string>('');
   const [timezone, setTimezone] = useState<string>('');
   const [role, setRole] = useState<string>('');
-  //const [languages, setLanguages] = useState<string[]>([]);
-  //const [technicalSkills, setTechnicalSkills] = useState<string[]>([]);
-  //const [softSkills, setSoftSkills] = useState<string[]>([]);
-  //const [hobbies, setHobbies] = useState<string[]>([]);
+  const [languages, setLanguages] = useState<object>({});
+  const [technicalSkills, setTechnicalSkills] = useState<object>({});
+  const [softSkills, setSoftSkills] = useState<object>({});
+  const [hobbies, setHobbies] = useState<object>({});
 
   const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    alert('Thanks for submitting the survey! You will be notified if you have been matched.');
+    const generalQuestions:boolean | number = name.length && position.length && timezone.length && role.length;
+    const specificQuestions: boolean | number = Object.keys(languages).length && Object.keys(technicalSkills).length && Object.keys(softSkills).length && Object.keys(hobbies).length;
+    if (generalQuestions && specificQuestions) {
+      alert('Thanks for submitting the survey! You will be notified if you have been matched.');
+    } else {
+      alert('Please fill out all fields before submitting the survey.');
+    }
   }
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const questionId = e.target.id;
-    const value = e.target.value;
+    const questionId: string = e.target.id;
+    const value: string = e.target.value;
     questionId === '1'
       ? setName(value)
       : questionId === '2'
@@ -29,8 +35,16 @@ const SurveyForm: React.FC = () => {
           : setRole(value)
   }
 
-  const handleCheckboxAnswer = (e: ChangeEvent<HTMLInputElement>) => {
-    
+  const handleMultipleChoice = (e: ChangeEvent<HTMLInputElement>) => {
+    const choice: string = e.target.value;
+    const name: string = e.target.name;
+    name === 'language'
+      ? setLanguages(Object.assign({ [choice]: true }, languages))
+      : name === 'technical'
+        ? setTechnicalSkills(Object.assign({ [choice]: true }, technicalSkills))
+        : name === 'soft'
+          ? setSoftSkills(Object.assign({ [choice]: true }, softSkills))
+          : setHobbies(Object.assign({ [choice]: true }, hobbies))
   }
 
   const MentorQuestions = (
@@ -38,31 +52,33 @@ const SurveyForm: React.FC = () => {
       <h4>What languages are you willing to mentor someone in? Please choose at least one.</h4>
       {allLanguages.map(language => (
         <div>
-          <input type="checkbox" id={language} name={language} value={language} onChange={handleCheckboxAnswer} />
-          <label htmlFor={language}>{language}</label>
+          <input type="checkbox" id={language} name='language' value={language} onChange={handleMultipleChoice} />
+          <label htmlFor='language'>{language}</label>
         </div>
       ))}
       <h4>What technical skills are you willing to mentor someone in? Please choose at least one.</h4>
       {allTechnicalSkills.map(technicalSkill => (
         <div>
-          <input type="checkbox" id={technicalSkill} name={technicalSkill} value={technicalSkill} onChange={handleCheckboxAnswer} />
-          <label htmlFor={technicalSkill}>{technicalSkill}</label>
+          <input type="checkbox" id={technicalSkill} name='technical' value={technicalSkill} onChange={handleMultipleChoice} />
+          <label htmlFor='technical'>{technicalSkill}</label>
         </div>
       ))}
       <h4>What soft skills are you willing to mentor someone in? Please choose at least one.</h4>
       {allSoftSkills.map(softSkill => (
         <div>
-          <input type="checkbox" id={softSkill} name={softSkill} value={softSkill} onChange={handleCheckboxAnswer} />
-          <label htmlFor={softSkill}>{softSkill}</label>
+          <input type="checkbox" id={softSkill} name='soft' value={softSkill} onChange={handleMultipleChoice} />
+          <label htmlFor='soft'>{softSkill}</label>
         </div>
       ))}
       <h4>What are your hobbies and interests? Please choose at least one.</h4>
       {allHobbies.map(hobby => (
         <div>
-          <input type="checkbox" id={hobby} name={hobby} value={hobby} onChange={handleCheckboxAnswer} />
-          <label htmlFor={hobby}>{hobby}</label>
+          <input type="checkbox" id={hobby} name='hobby' value={hobby} onChange={handleMultipleChoice} />
+          <label htmlFor='hobby'>{hobby}</label>
         </div>
       ))}
+      <br></br>
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 
@@ -71,40 +87,43 @@ const SurveyForm: React.FC = () => {
       <h4>What languages would you like to be mentored in? Please choose at least one.</h4>
       {allLanguages.map(language => (
         <div>
-          <input type="checkbox" id={language} name={language} value={language} onChange={handleCheckboxAnswer} />
-          <label htmlFor={language}>{language}</label>
+          <input type="checkbox" id={language} name='language' value={language} onChange={handleMultipleChoice} />
+          <label htmlFor='language'>{language}</label>
         </div>
       ))}
       <h4>What technical skills would you like to be mentored in? Please choose at least one.</h4>
       {allTechnicalSkills.map(technicalSkill => (
         <div>
-          <input type="checkbox" id={technicalSkill} name={technicalSkill} value={technicalSkill} onChange={handleCheckboxAnswer} />
-          <label htmlFor={technicalSkill}>{technicalSkill}</label>
+          <input type="checkbox" id={technicalSkill} name='technical' value={technicalSkill} onChange={handleMultipleChoice} />
+          <label htmlFor='technical'>{technicalSkill}</label>
         </div>
       ))}
       <h4>What soft skills would you like to be mentored in? Please choose at least one.</h4>
       {allSoftSkills.map(softSkill => (
         <div>
-          <input type="checkbox" id={softSkill} name={softSkill} value={softSkill} onChange={handleCheckboxAnswer} />
-          <label htmlFor={softSkill}>{softSkill}</label>
+          <input type="checkbox" id={softSkill} name='soft' value={softSkill} onChange={handleMultipleChoice} />
+          <label htmlFor='soft'>{softSkill}</label>
         </div>
       ))}
       <h4>What are your hobbies and interests? Please choose at least one.</h4>
       {allHobbies.map(hobby => (
         <div>
-          <input type="checkbox" id={hobby} name={hobby} value={hobby} onChange={handleCheckboxAnswer} />
-          <label htmlFor={hobby}>{hobby}</label>
+          <input type="checkbox" id={hobby} name='hobby' value={hobby} onChange={handleMultipleChoice} />
+          <label htmlFor='hobby'>{hobby}</label>
         </div>
       ))}
+      <br></br>
+      <button onClick={handleSubmit}>Submit</button>
     </div>
   );
 
   return (
     <div className="SurveyForm">
       <header>
-        <img src={logo} alt='' className="App-logo" width="20%" height="auto" />
+        <img src={logo} alt='' className="logo" width="20%" height="auto" />
         <h1>Welcome to MentorMatch!</h1>
       </header>
+      
       <h3>Please fill out the following questions to find your perfect match!</h3>
 
       <form>
@@ -120,7 +139,7 @@ const SurveyForm: React.FC = () => {
         <h4>Are you interested in being a mentor or mentee?</h4>
         <input type="radio" id="mentor" name="role" value="mentor" onChange={handleInputChange} />
         <label htmlFor="mentor">Mentor</label>
-
+        {'  '}
         <input type="radio" id="mentee" name="role" value="mentee" onChange={handleInputChange} />
         <label htmlFor="mentee">Mentee</label>
         <br></br>
@@ -131,8 +150,6 @@ const SurveyForm: React.FC = () => {
             ? MenteeQuestions
             : null
         }
-
-        <button onClick={handleSubmit}>Submit</button>
 
       </form>
     </div>

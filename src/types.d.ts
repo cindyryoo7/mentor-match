@@ -1,7 +1,7 @@
 declare module 'Types' {
 
   type Question = {
-    questionId: number;
+    questionId: string;
     questionType: string;
     question: string;
     answers: string[];
