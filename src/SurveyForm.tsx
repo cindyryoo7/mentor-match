@@ -14,7 +14,7 @@ const SurveyForm: React.FC = () => {
 
   const handleSubmit = (e: FormEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    const generalQuestions:boolean | number = name.length && position.length && timezone.length && role.length;
+    const generalQuestions: boolean | number = name.length && position.length && timezone.length && role.length;
     const specificQuestions: boolean | number = Object.keys(languages).length && Object.keys(technicalSkills).length && Object.keys(softSkills).length && Object.keys(hobbies).length;
     if (generalQuestions && specificQuestions) {
       alert('Thanks for submitting the survey! You will be notified if you have been matched.');
