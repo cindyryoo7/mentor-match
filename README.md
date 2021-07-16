@@ -3,7 +3,7 @@
 ## Table of Contents
 
 1. [Description](#Description)
-2. [MentorMatch In Action](#In-Action)
+2. [In Action](#In-Action)
 2. [Background](#Background)
 3. [Main Goals](#Main-Goals)
 4. [Core User Features](#Core-User-Features)
@@ -11,13 +11,13 @@
 6. [Challenges](#Challenges)
 7. [Reflections](#Reflections)
 8. [Future Goals](#Future-Goals)
-9. [Resources](#Resources)
+9. [Planning Resources](#Planning-Resources)
 10. [Setup](#Setup)
 
 ## Description
 MentorMatch is a simple, single-page survey designed to match up a software engineer with a mentor or mentee around the world. Users answer a variety of questions about their strengths and weaknesses, interests, time zone, and mentor/mentee designation to match them up with another user with similar interests. This project was created as a part of [Optimizely](https://www.optimizely.com/)'s 2021 Q2 Hack Days.
 
-## MentorMatch In Action
+## In Action
 ![homepage](src/assets/page1.png?raw=true "page 1")
 ![homepage](src/assets/page2.png?raw=true "page 2")
 ![homepage](src/assets/page3.png?raw=true "page 3")
@@ -29,7 +29,7 @@ The purpose of MentorMatch is to match up [Optimizely](https://www.optimizely.co
 - employee empowerment,
 - boosting minority representation at the management level, and more.
 
-Implementing a mentorship program at [Optimizely](https://www.optimizely.com/) is a great way to to keep our employees engaged, productive and motivated, and would meaningfully improve our company culture.
+Implementing a mentorship program at [Optimizely](https://www.optimizely.com/) is a great way to keep our employees engaged, productive and motivated, and would meaningfully improve our company culture.
 
 ## Main Goals
 1. Learn Typescript.
@@ -65,11 +65,11 @@ Implementing a mentorship program at [Optimizely](https://www.optimizely.com/) i
 ## Reflections
 - I had a lot of ideas for this project that I was unable to implement due to the time constraints. Learning Typescript, Redux, and Redux-Saga took more time than I expected. At multiple points throughout the project, I was forced to reflect on the main goal I had set for myself: learn Typescript. After taking most of Day 2 to set up the Redux store, I decided that I needed to focus on producing a Minimum Viable Product (MVP), which led me to entirely removing Redux from the project on Day 3.
 - I really enjoyed learning Typescript, because I was able to make a lot of connections between Javascript, my main programming language, and C#, which I am currently learning for my internship. As I researched and learned more about the benefits of Typescript, I started to see how powerful object-oriented programming (OOP) can be.
-- I spent quite a bit of time on the first day planning and setting up the project. I usually find that taking the time to plan out the project structure, layout, schedule, etc. is helpful in terms of project setup and workflow. However, since this was only a three-day project, I think all the planning ended up taking up some useful time that I could have potentially spent on researching Typescript or implementing the other features I had hoped to finish.
+- I spent quite a bit of time on the first day planning and setting up the project (see [Planning Resources](#Planning-Resources) below). I usually find that taking the time to plan out the project structure, layout, schedule, etc. is helpful in terms of project setup and workflow. However, since this was only a three-day project, I think all the planning ended up taking up some useful time that I could have potentially spent on researching Typescript or implementing the other features I had hoped to finish.
  
 ## Future Goals
 - Create a Node/Express server.
-- Create a GraphQL database for the backend system.
+- Create a GraphQL API for the backend system.
 - Create a matching algorithm to pair up users based on their survey answers while incorporating time zones.
 - Expand the survey to allow users to find a “buddy” rather than a mentor/mentee.
 - Deploy the app on an AWS EC2 instance and Docker container.
