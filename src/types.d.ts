@@ -1,7 +1,13 @@
 declare module 'Types' {
-  export type QuestionAnswer = {
-    questionId: number;
+
+  type Question = {
+    questionId: string;
     questionType: string;
+    question: string;
     answers: string[];
+  }
+
+  export {
+    Question
   }
 }
